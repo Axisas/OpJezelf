@@ -7,19 +7,24 @@
     <title>Op Jezelf Bank-App</title>
   </head>
   <body>
-    <h1>Budget:</h1>
-    <h1 id="money">0</h1>
+    <div class="budget">
+      <h1>Budget:</h1>
+      <h1 id="money">0</h1>
+    </div>
 
-    <input id="changemoney" type="number" step="5" value="0" />
-    <button id="submit">Submit</button>
+    <div class="submitbutton">
+      <input class="button" id="changemoney" type="number" step="5" value="0" />
+      <button class="button" id="submit">Submit</button>
+    </div>
+    <div class="buttonsbox">
+      <button class="button" id="groceries">Boodschappen</button>
+    </div>
+    <div class="buttonsbox">
+      <button class="button" id="income">Vaste Inkomsten</button>
 
-    <button id="groceries">Boodschappen</button>
-
-    <button id="income">Vaste Inkomsten</button>
-
-    <button id="charges">Vaste Lasten</button>
-
-    <button id="restart">Restart</button>
+      <button class="button" id="charges">Vaste Lasten</button>
+    </div>
+    <button class="button" id="restart">Restart</button>
 
     <script src="script.js"></script>
   </body>
