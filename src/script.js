@@ -4,11 +4,9 @@ let moneyValue = 1000;
 // i is used in the Interval as a counter
 let i = 0;
 let changeMoney;
-let groceries;
-let income;
-let charges;
 
 let moneyText = document.getElementById("money");
+
 moneyText.innerHTML = moneyValue;
 
 const inkomstenValues = [600, 240, 120, 660];
@@ -30,47 +28,59 @@ const lastenSources = [
   "Telefoon",
 ];
 
-// restart is not part of the function since this one will always be available
+const moneyInputField = document.getElementById("changemoney");
+// ensures the input field is empty on refresh
+moneyInputField.value = "";
+
+// Adds eventlisteners to the buttons
 const restart = document
   .getElementById("restart")
   .addEventListener("click", function () {
     moneyValue = 1000;
     moneyText.innerHTML = moneyValue;
+    moneyInputField.value = "";
     checkBalance();
+    clearInterval(changeMoney);
   });
 
-// adds the eventlisteners, since these will be disabled at certain times
-function addEventListeners() {
-  groceries = document
-    .getElementById("groceries")
-    .addEventListener("click", function () {
-      setTimeout(boodschappen, 300);
-    });
+const groceries = document.getElementById("groceries");
 
-  income = document
-    .getElementById("income")
-    .addEventListener("click", function () {
-      i = 0;
-      changeMoney = setInterval(changeBalance, 1000, inkomstenValues);
-    });
+groceries.addEventListener("click", function () {
+  setTimeout(changeMoneyValueOnce, 300, -45);
+  disableInteractables();
+});
 
-  charges = document
-    .getElementById("charges")
-    .addEventListener("click", function () {
-      i = 0;
-      changeMoney = setInterval(changeBalance, 1000, lastenValues);
-    });
-}
+const income = document.getElementById("income");
 
-addEventListeners();
+income.addEventListener("click", function () {
+  i = 0;
+  changeMoney = setInterval(changeBalance, 1000, inkomstenValues);
+  disableInteractables();
+});
+
+const charges = document.getElementById("charges");
+
+charges.addEventListener("click", function () {
+  i = 0;
+  changeMoney = setInterval(changeBalance, 1000, lastenValues);
+  disableInteractables();
+});
+
+const submit = document.getElementById("submit");
+
+submit.addEventListener("click", function () {
+  setTimeout(changeMoneyValueOnce, 300, moneyInputField.value);
+  disableInteractables();
+});
 
 // checks whether the balance is negative or not
 function checkBalance() {
   if (moneyValue < 0) {
-    moneyText.style.color = "red";
+    moneyText.style.color = "darkred";
   } else {
     moneyText.style.color = "black";
   }
+  enableInteractables();
 }
 
 function changeBalance(Values) {
@@ -78,7 +88,7 @@ function changeBalance(Values) {
     if (Values[i] > 0) {
       moneyText.style.color = "green";
     } else {
-      moneyText.style.color = "red";
+      moneyText.style.color = "darkred";
     }
     moneyValue += Values[i];
     moneyText.innerHTML = moneyValue;
@@ -89,9 +99,33 @@ function changeBalance(Values) {
   }
 }
 
-function boodschappen() {
-  moneyValue -= 45;
-  moneyText.style.color = "red";
+function changeMoneyValueOnce(value) {
+  // converts value into a number type if necessary
+  value = value * 1;
+  moneyValue += value;
+  if (value > 0) {
+    moneyText.style.color = "green";
+  } else {
+    moneyText.style.color = "darkred";
+  }
   moneyText.innerHTML = moneyValue;
   setTimeout(checkBalance, 500);
+}
+
+// disables the buttons for a while after clicking something,
+// this is to prevent breaking everything
+function disableInteractables() {
+  moneyInputField.disabled = true;
+  submit.disabled = true;
+  groceries.disabled = true;
+  income.disabled = true;
+  charges.disabled = true;
+}
+
+function enableInteractables() {
+  moneyInputField.disabled = false;
+  submit.disabled = false;
+  groceries.disabled = false;
+  income.disabled = false;
+  charges.disabled = false;
 }
