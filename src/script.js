@@ -30,29 +30,29 @@ const lastenSources = [
 
 const moneyInputField = document.getElementById("changemoney");
 // ensures the input field is empty on refresh
-moneyInputField.value = "";
+moneyInputField.value = 0;
 
 // Adds eventlisteners to the buttons
 const restart = document
   .getElementById("restart")
-  .addEventListener("click", function () {
+  .addEventListener("pointerdown", function () {
     moneyValue = 1000;
     moneyText.innerHTML = moneyValue;
-    moneyInputField.value = "";
+    moneyInputField.value = 0;
     checkBalance();
     clearInterval(changeMoney);
   });
 
 const groceries = document.getElementById("groceries");
 
-groceries.addEventListener("click", function () {
+groceries.addEventListener("pointerdown", function () {
   setTimeout(changeMoneyValueOnce, 300, -45);
   disableInteractables();
 });
 
 const income = document.getElementById("income");
 
-income.addEventListener("click", function () {
+income.addEventListener("pointerdown", function () {
   i = 0;
   changeMoney = setInterval(changeBalance, 1000, inkomstenValues);
   disableInteractables();
@@ -60,7 +60,7 @@ income.addEventListener("click", function () {
 
 const charges = document.getElementById("charges");
 
-charges.addEventListener("click", function () {
+charges.addEventListener("pointerdown", function () {
   i = 0;
   changeMoney = setInterval(changeBalance, 1000, lastenValues);
   disableInteractables();
@@ -68,7 +68,7 @@ charges.addEventListener("click", function () {
 
 const submit = document.getElementById("submit");
 
-submit.addEventListener("click", function () {
+submit.addEventListener("pointerdown", function () {
   setTimeout(changeMoneyValueOnce, 300, moneyInputField.value);
   disableInteractables();
 });
