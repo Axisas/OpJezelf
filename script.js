@@ -16,6 +16,8 @@ let income = document.getElementById("income");
 let charges = document.getElementById("charges");
 let submit = document.getElementById("submit");
 
+let toggler = document.getElementById("toggler");
+
 function restartApp() {
   moneyValue = 1100;
   moneyText.innerHTML = moneyValue;
@@ -53,6 +55,17 @@ const chargesSources = [
 ];
 
 // Adds eventlisteners to the buttons
+
+toggler.addEventListener("pointerdown", function () {
+  if (toggler.style.bottom == "0px") {
+    toggler.style.bottom = "20%";
+    document.getElementById("inputwrapper").style.visibility = "visible";
+  } else {
+    toggler.style.bottom = "0px";
+    document.getElementById("inputwrapper").style.visibility = "hidden";
+  }
+});
+
 groceries.addEventListener("pointerdown", function () {
   setTimeout(changeMoneyValueOnce, 300, -45, "Groceries");
   disableButtons();

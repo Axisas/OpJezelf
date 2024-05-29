@@ -6,6 +6,9 @@
   vertical-align: baseline;
   background: transparent;
   color: black;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -37,7 +40,7 @@ body {
 
 /* Everything outside of the header below:  */
 
-.inputwrapper {
+#inputwrapper {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -45,6 +48,7 @@ body {
   justify-content: center;
   border-top: 3px solid black;
   padding-top: 15px;
+  visibility: hidden;
 }
 
 .wrapper {
@@ -77,4 +81,18 @@ body {
 
 .button:active {
   background-color: rgb(192, 192, 192);
+}
+
+#toggler {
+  position: fixed;
+  border: 3px solid black;
+  border-bottom: 0;
+  background-color: lightgray;
+  font-size: 32px;
+  z-index: 1;
+  left: 47%;
+  right: 47%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 2%;
 }
