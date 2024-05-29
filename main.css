@@ -10,6 +10,7 @@
 body {
   font-family: sans-serif;
   text-align: center;
+  color: black;
 }
 
 .budget {
@@ -40,10 +41,10 @@ body {
   box-sizing: border-box;
   display: block;
 }
-
+/* 
 #restart {
   position: absolute;
   bottom: 5%;
   width: 25%;
   left: 37.5%;
-}
+} */
