@@ -55,24 +55,24 @@ const chargesSources = [
 // Adds eventlisteners to the buttons
 groceries.addEventListener("pointerdown", function () {
   setTimeout(changeMoneyValueOnce, 300, -45, "Groceries");
-  disableInteractables();
+  disableButtons();
 });
 
 income.addEventListener("pointerdown", function () {
   i = 0;
   changeMoney = setInterval(changeBalance, 1000, incomeValues, incomeSources);
-  disableInteractables();
+  disableButtons();
 });
 
 charges.addEventListener("pointerdown", function () {
   i = 0;
   changeMoney = setInterval(changeBalance, 1000, chargesValues, chargesSources);
-  disableInteractables();
+  disableButtons();
 });
 
 submit.addEventListener("pointerdown", function () {
   setTimeout(changeMoneyValueOnce, 300, moneyInputField.value, "Other");
-  disableInteractables();
+  disableButtons();
 });
 
 function changeBalance(values, sources) {
@@ -102,7 +102,7 @@ function changeBalance(values, sources) {
   } else {
     checkBalance();
     clearInterval(changeMoney);
-    enableInteractables();
+    enableButtons();
   }
 }
 
@@ -125,7 +125,7 @@ function changeMoneyValueOnce(value, source) {
     moneyText.innerHTML = moneyValue;
 
     checkBalance();
-    enableInteractables();
+    enableButtons();
     clearInterval(changeMoney);
 
     moneyUpdateText.style.visibility = "hidden";
@@ -136,20 +136,23 @@ function changeMoneyValueOnce(value, source) {
 
 // NEED TO FIX BELOW: //
 
-function disableInteractables() {
-  // moneyInputField.disabled = true;
-  // submit.disabled = true;
-  // groceries.disabled = true;
-  // income.disabled = true;
-  // charges.disabled = true;
+function disableButtons() {
+  moneyInputField.style.pointerEvents = "none";
+  submit.style.pointerEvents = "none";
+  groceries.style.pointerEvents = "none";
+  income.style.pointerEvents = "none";
+  charges.style.pointerEvents = "none";
 }
 
-function enableInteractables() {
-  // moneyInputField.disabled = false;
-  // submit.disabled = false;
-  // groceries.disabled = false;
-  // income.disabled = false;
-  // charges.disabled = false;
+function enableButtons() {
+  moneyInputField.style.pointerEvents = "auto";
+  submit.style.pointerEvents = "auto";
+  groceries.style.pointerEvents = "auto";
+  income.style.pointerEvents = "auto";
+  charges.style.pointerEvents = "auto";
+
+  // Logs past purchases, is run in this function
+  // since this one runs at the end of all the balance changes
   console.log(pastPurchases);
 }
 
