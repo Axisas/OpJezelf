@@ -87,6 +87,8 @@ function changeBalance(Values) {
 
     setTimeout(() => {
       moneyText.innerHTML = moneyValue;
+      checkBalance();
+
       moneyUpdateText.style.visibility = "hidden";
     }, 500);
 
