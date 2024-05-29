@@ -8,16 +8,17 @@ let changeMoney;
 let moneyText = document.getElementById("money");
 let moneyUpdateText = document.getElementById("moneychanged");
 
-const moneyInputField = document.getElementById("changemoney");
-const groceries = document.getElementById("groceries");
-const income = document.getElementById("income");
-const charges = document.getElementById("charges");
-const submit = document.getElementById("submit");
+let moneyInputField = document.getElementById("changemoney");
+let groceries = document.getElementById("groceries");
+let income = document.getElementById("income");
+let charges = document.getElementById("charges");
+let submit = document.getElementById("submit");
 
 function restartApp() {
   moneyValue = 1000;
   moneyText.innerHTML = moneyValue;
-  moneyUpdateText.innerHTML = "";
+  // sets a placeholder value;
+  moneyUpdateText.innerHTML = 100;
   moneyInputField.value = 0;
   checkBalance();
   clearInterval(changeMoney);
@@ -29,23 +30,23 @@ const restart = document
 document.addEventListener("DOMContentLoaded", restartApp);
 
 const inkomstenValues = [600, 240, 120, 660];
-const inkomstenSources = [
-  "Studiefinanciering",
-  "Huurtoeslag",
-  "Zorgtoeslag",
-  "Bijbaan",
-];
+// const inkomstenSources = [
+//   "Studiefinanciering",
+//   "Huurtoeslag",
+//   "Zorgtoeslag",
+//   "Bijbaan",
+// ];
 
 const lastenValues = [-260, -430, -130, -50, -60, -125, -20];
-const lastenSources = [
-  "Schoolgeld",
-  "Huur",
-  "Zorgverzekering",
-  "Wifi",
-  "Vervoer",
-  "Vrije Tijd",
-  "Telefoon",
-];
+// const lastenSources = [
+//   "Schoolgeld",
+//   "Huur",
+//   "Zorgverzekering",
+//   "Wifi",
+//   "Vervoer",
+//   "Vrije Tijd",
+//   "Telefoon",
+// ];
 
 // Adds eventlisteners to the buttons
 
@@ -74,23 +75,29 @@ submit.addEventListener("pointerdown", function () {
 function changeBalance(Values) {
   moneyUpdateText.innerHTML = "";
   if (Values[i]) {
+    moneyUpdateText.style.visibility = "visible";
     if (Values[i] > 0) {
-      // moneyText.style.color = "green";
       moneyUpdateText.style.color = "green";
       moneyUpdateText.innerHTML = "+";
     } else {
-      // moneyText.style.color = "darkred";
       moneyUpdateText.style.color = "darkred";
     }
     moneyValue += Values[i];
-    moneyText.innerHTML = moneyValue;
     moneyUpdateText.innerHTML += Values[i];
+
+    setTimeout(() => {
+      moneyText.innerHTML = moneyValue;
+      moneyUpdateText.style.visibility = "hidden";
+    }, 500);
+
     i++;
   } else {
     clearInterval(changeMoney);
     checkBalance();
   }
 }
+
+function updateBalance(value) {}
 
 function changeMoneyValueOnce(value) {
   // converts value into a number type if necessary
