@@ -1,5 +1,5 @@
 // 1000 is de standaard beginwaarde
-let moneyValue = 1000;
+let moneyValue;
 
 // i is used in the Interval as a counter
 let i = 0;
@@ -15,7 +15,7 @@ let charges = document.getElementById("charges");
 let submit = document.getElementById("submit");
 
 function restartApp() {
-  moneyValue = 1000;
+  moneyValue = 1100;
   moneyText.innerHTML = moneyValue;
   // sets a placeholder value;
   moneyUpdateText.innerHTML = 100;
@@ -49,7 +49,6 @@ const lastenValues = [-260, -430, -130, -50, -60, -125, -20];
 // ];
 
 // Adds eventlisteners to the buttons
-
 groceries.addEventListener("pointerdown", function () {
   setTimeout(changeMoneyValueOnce, 300, -45);
   disableInteractables();
@@ -73,7 +72,6 @@ submit.addEventListener("pointerdown", function () {
 });
 
 function changeBalance(Values) {
-  moneyUpdateText.innerHTML = "";
   if (Values[i]) {
     moneyUpdateText.style.visibility = "visible";
     if (Values[i] > 0) {
@@ -81,6 +79,7 @@ function changeBalance(Values) {
       moneyUpdateText.innerHTML = "+";
     } else {
       moneyUpdateText.style.color = "darkred";
+      moneyUpdateText.innerHTML = "";
     }
     moneyValue += Values[i];
     moneyUpdateText.innerHTML += Values[i];
@@ -96,6 +95,7 @@ function changeBalance(Values) {
   } else {
     clearInterval(changeMoney);
     checkBalance();
+    enableInteractables();
   }
 }
 
@@ -114,7 +114,7 @@ function changeMoneyValueOnce(value) {
   setTimeout(checkBalance, 500);
 }
 
-// disables the buttons for a while after clicking something,
+// disables the buttons after clicking something, until done changing values
 // this is to prevent breaking everything
 function disableInteractables() {
   moneyInputField.disabled = true;
@@ -139,5 +139,4 @@ function checkBalance() {
   } else {
     moneyText.style.color = "black";
   }
-  enableInteractables();
 }
