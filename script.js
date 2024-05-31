@@ -22,7 +22,7 @@ let toggler = document.getElementById("toggler");
 
 // EventListener for the restart button, enable if that button is enabled
 
-const incomeValues = [600, 240, 120, 660];
+let incomeValues = [600, 240, 120, 660];
 const incomeSources = [
   "Studiefinanciering",
   "Huurtoeslag",
@@ -30,7 +30,7 @@ const incomeSources = [
   "Bijbaan",
 ];
 
-const chargesValues = [-260, -430, -130, -50, -60, -125, -20];
+let chargesValues = [-260, -430, -130, -50, -60, -125, -20];
 const chargesSources = [
   "Schoolgeld",
   "Huur",

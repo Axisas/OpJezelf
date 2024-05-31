@@ -12,10 +12,23 @@
 
     <div id="popupbg" onclick="togglePopUp()"></div>
     <div id="settingspopup">
-      <button class="button" id="restart" onclick="restartApp(); togglePopUp()">
+      <button class="button" id="restart" onclick="location.reload()">
         Restart
       </button>
-      <button class="button" id="changeValues">Verander Waardes</button>
+
+      <div id="changevalues">
+        <input
+          class="button"
+          id="changeStartValue"
+          type="number"
+          step="5"
+          value="0"
+        />
+        <input class="button" id="changeIncome" step="5" value="0" />
+        <input class="button" id="changeCharges" step="5" value="0" />
+      </div>
+
+      <button class="button" onclick="changeSettings()">Submit</button>
     </div>
 
     <div class="budget">
