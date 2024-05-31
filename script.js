@@ -4,7 +4,7 @@ let moneyValue;
 // i is used in the Interval as a counter
 let i = 0;
 let changeMoney;
-
+let startingMoney = 1100;
 let pastPurchases = ["1100 : Spaargeld"];
 
 let moneyText = document.getElementById("money");
@@ -18,22 +18,9 @@ let submit = document.getElementById("submit");
 
 let toggler = document.getElementById("toggler");
 
-function restartApp() {
-  moneyValue = 1100;
-  moneyText.innerHTML = moneyValue;
-  // sets a placeholder value;
-  moneyUpdateText.innerHTML = 100;
-  moneyInputField.value = 0;
-  checkBalance();
-  clearInterval(changeMoney);
-}
+// runs at the start as well to ensure everything is set up correctly
 
-restartApp();
 // EventListener for the restart button, enable if that button is enabled
-// const restart = document
-//   .getElementById("restart")
-//   .addEventListener("pointerdown", restartApp);
-// document.addEventListener("DOMContentLoaded", restartApp);
 
 const incomeValues = [600, 240, 120, 660];
 const incomeSources = [
@@ -58,7 +45,7 @@ const chargesSources = [
 
 toggler.addEventListener("pointerdown", function () {
   if (toggler.style.bottom == "0px") {
-    toggler.style.bottom = "218px";
+    toggler.style.bottom = "200px";
     for (const child of toggler.children) {
       child.style.transform = "rotate(180deg)";
     }
@@ -186,8 +173,6 @@ function checkBalance() {
 let purchaseHistory = document.getElementById("history");
 
 function updateHistory(lastPurchase, source) {
-  console.log(pastPurchases);
-
   let listElement = document.createElement("li");
   listElement.appendChild(
     document.createTextNode(`${lastPurchase} : ${source}`)

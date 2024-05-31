@@ -23,7 +23,7 @@ body {
   width: 100%;
   height: 20vh;
   box-sizing: border-box;
-  border-bottom: 3px solid black;
+  border-bottom: 2px solid black;
   background-color: white;
   display: flex;
   text-align: center;
@@ -47,10 +47,10 @@ body {
   left: 0;
   right: 0;
   justify-content: center;
-  border-top: 3px solid black;
-  padding-top: 15px;
+  border-top: 2px solid black;
   height: 200px;
   background-color: white;
+  box-sizing: border-box;
 }
 
 .wrapper {
@@ -68,10 +68,10 @@ body {
 
 .button {
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 1px solid gray;
   background-color: white;
-  font-size: 24px;
-  margin: 5px;
+  font-size: 16px;
+  margin: 2px;
   padding: 5px;
   border-radius: 2px;
   text-decoration: none;
@@ -88,7 +88,7 @@ body {
 #toggler {
   position: fixed;
   height: 15px;
-  bottom: 218px;
+  bottom: 200px;
   left: 45%;
   right: 45%;
   border: 1px solid black;
@@ -125,4 +125,39 @@ body {
   font-size: 18px;
   /* border-bottom: 2px solid lightgray; */
   background-color: white;
+}
+
+#settingsbutton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 36px;
+  font-weight: bolder;
+  padding: 15px;
+}
+
+#settingsbutton:hover {
+  text-decoration: underline;
+}
+
+#settingspopup {
+  position: absolute;
+  box-sizing: border-box;
+  width: 90vw;
+  height: 50vh;
+  margin: 5%;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 3;
+  display: none;
+}
+
+#popupbg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+  display: none;
+  z-index: 2;
+  background-color: gray;
 }

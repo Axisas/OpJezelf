@@ -7,6 +7,15 @@
     <title>Op Jezelf Bank-App</title>
   </head>
   <body>
+    <!-- Button to change all of the values of income and charges -->
+    <button id="settingsbutton">⚙</button>
+
+    <div id="popupbg"></div>
+    <div id="settingspopup">
+      <button class="button" id="restart">Restart</button>
+      <button class="button" id="changeValues">Verander Waardes</button>
+    </div>
+
     <div class="budget">
       <h1>€</h1>
       <h1 id="money">0</h1>
@@ -41,13 +50,9 @@
 
         <button class="button" id="charges">Vaste Lasten</button>
       </div>
-      <!-- Button to change all of the values of income and charges -->
-      <!-- <button class="button">Verander </button> -->
     </div>
 
-    <!-- Restart button if necessary -->
-    <!-- <button class="button" id="restart">Restart</button> -->
-
     <script src="script.js"></script>
+    <script src="settings.js"></script>
   </body>
 </html>
