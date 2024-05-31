@@ -48,7 +48,7 @@ body {
   justify-content: center;
   border-top: 3px solid black;
   padding-top: 15px;
-  visibility: hidden;
+  height: 200px;
 }
 
 .wrapper {
@@ -85,14 +85,15 @@ body {
 
 #toggler {
   position: fixed;
+  height: 20px;
+  bottom: 218px;
+  left: 45%;
+  right: 45%;
   border: 3px solid black;
   border-bottom: 0;
-  background-color: lightgray;
+  background-color: rgb(230, 230, 230);
   font-size: 32px;
   z-index: 1;
-  left: 47%;
-  right: 47%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 2%;
 }

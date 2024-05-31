@@ -58,7 +58,7 @@ const chargesSources = [
 
 toggler.addEventListener("pointerdown", function () {
   if (toggler.style.bottom == "0px") {
-    toggler.style.bottom = "20%";
+    toggler.style.bottom = "218px";
     document.getElementById("inputwrapper").style.visibility = "visible";
   } else {
     toggler.style.bottom = "0px";
