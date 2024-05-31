@@ -59,9 +59,15 @@ const chargesSources = [
 toggler.addEventListener("pointerdown", function () {
   if (toggler.style.bottom == "0px") {
     toggler.style.bottom = "218px";
+    for (const child of toggler.children) {
+      child.style.transform = "rotate(180deg)";
+    }
     document.getElementById("inputwrapper").style.visibility = "visible";
   } else {
     toggler.style.bottom = "0px";
+    for (const child of toggler.children) {
+      child.style.transform = "rotate(0deg)";
+    }
     document.getElementById("inputwrapper").style.visibility = "hidden";
   }
 });
@@ -102,6 +108,7 @@ function changeBalance(values, sources) {
     moneyUpdateText.innerHTML += values[i];
 
     pastPurchases.push(`${moneyUpdateText.innerHTML},- : ${sources[i]}`);
+    updateHistory(moneyUpdateText.innerHTML, sources[i]);
 
     setTimeout(() => {
       moneyText.innerHTML = moneyValue;
@@ -145,6 +152,7 @@ function changeMoneyValueOnce(value, source) {
   }, 500);
 
   pastPurchases.push(`${moneyUpdateText.innerHTML},- : ${source}`);
+  updateHistory(moneyUpdateText.innerHTML, source);
 }
 
 // NEED TO FIX BELOW: //
@@ -163,10 +171,6 @@ function enableButtons() {
   groceries.style.pointerEvents = "auto";
   income.style.pointerEvents = "auto";
   charges.style.pointerEvents = "auto";
-
-  // Logs past purchases, is run in this function
-  // since this one runs at the end of all the balance changes
-  console.log(pastPurchases);
 }
 
 // checks whether the balance is negative or not
@@ -176,4 +180,18 @@ function checkBalance() {
   } else {
     moneyText.style.color = "black";
   }
+}
+
+// Function for displaying purchase history
+let purchaseHistory = document.getElementById("history");
+
+function updateHistory(lastPurchase, source) {
+  console.log(pastPurchases);
+
+  let listElement = document.createElement("li");
+  listElement.appendChild(
+    document.createTextNode(`${lastPurchase} : ${source}`)
+  );
+  listElement.setAttribute("id", "listelement");
+  purchaseHistory.appendChild(listElement);
 }

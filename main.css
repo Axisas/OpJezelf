@@ -14,6 +14,7 @@
 body {
   font-family: sans-serif;
   text-align: center;
+  overflow: hidden;
 }
 
 .budget {
@@ -49,6 +50,7 @@ body {
   border-top: 3px solid black;
   padding-top: 15px;
   height: 200px;
+  background-color: white;
 }
 
 .wrapper {
@@ -96,4 +98,31 @@ body {
   z-index: 1;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+#toggler p {
+  transform: rotate(180deg);
+  /* ensures it it properly centered on rotation */
+  transform-origin: center 30%;
+}
+
+#history {
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-align: left;
+  list-style: none;
+  font-size: 24px;
+  z-index: 1;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 80vh;
+  max-height: 80vh;
+  -webkit-overflow-scrolling: touch;
+}
+#listelement {
+  margin: 5px;
+  padding: 20px;
+  font-size: 18px;
+  border: 1px solid gray;
 }
