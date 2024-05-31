@@ -1,6 +1,7 @@
 // 1000 is de standaard beginwaarde
 let moneyValue;
 
+let moneyHasChanged = false;
 // i is used in the Interval as a counter
 let i = 0;
 let changeMoney;
@@ -82,6 +83,7 @@ submit.addEventListener("pointerdown", function () {
 });
 
 function changeBalance(values, sources) {
+  moneyHasChanged = true;
   if (values[i]) {
     moneyUpdateText.style.visibility = "visible";
     if (values[i] > 0) {
@@ -114,6 +116,7 @@ function changeBalance(values, sources) {
 }
 
 function changeMoneyValueOnce(value, source) {
+  moneyHasChanged = true;
   // converts value into a number type if necessary
   value = value * 1;
   moneyUpdateText.style.visibility = "visible";

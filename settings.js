@@ -27,9 +27,11 @@ for (let i = 1; i < chargesValues.length; i++) {
 document.addEventListener("DOMContentLoaded", startApp);
 
 function changeSettings() {
-  startingMoney = startInput.value * 1;
-  moneyValue = startingMoney;
-  moneyText.innerHTML = moneyValue;
+  if (!moneyHasChanged) {
+    startingMoney = startInput.value * 1;
+    moneyValue = startingMoney;
+    moneyText.innerHTML = moneyValue;
+  }
 
   incomeValues = [];
   chargesValues = [];
