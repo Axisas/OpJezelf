@@ -19,15 +19,14 @@ body {
 
 .budget {
   padding-top: 50px;
-  padding-bottom: 25px;
   width: 100%;
-  height: 8%;
+  height: 20vh;
+  box-sizing: border-box;
   border-bottom: 3px solid black;
   background-color: white;
   display: flex;
   text-align: center;
   justify-content: center;
-  position: relative;
 }
 
 #moneychanged {
@@ -114,9 +113,8 @@ body {
   list-style: none;
   font-size: 24px;
   z-index: 1;
-  overflow: hidden;
   overflow-y: scroll;
-  height: 55vh;
+  height: 80vh;
   -webkit-overflow-scrolling: touch;
 }
 #listelement {
