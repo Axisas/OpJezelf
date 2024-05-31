@@ -116,8 +116,7 @@ body {
   z-index: 1;
   overflow: hidden;
   overflow-y: scroll;
-  height: 80vh;
-  max-height: 80vh;
+  height: 55vh;
   -webkit-overflow-scrolling: touch;
 }
 #listelement {
