@@ -5,7 +5,7 @@ let moneyValue;
 let i = 0;
 let changeMoney;
 
-let pastPurchases = [];
+let pastPurchases = ["1100 : Spaargeld"];
 
 let moneyText = document.getElementById("money");
 let moneyUpdateText = document.getElementById("moneychanged");
@@ -192,6 +192,12 @@ function updateHistory(lastPurchase, source) {
   listElement.appendChild(
     document.createTextNode(`${lastPurchase} : ${source}`)
   );
+  if (lastPurchase > 0) {
+    listElement.style.color = "green";
+  }
+  if (lastPurchase < 0) {
+    listElement.style.color = "darkred";
+  }
   listElement.setAttribute("id", "listelement");
-  purchaseHistory.appendChild(listElement);
+  purchaseHistory.insertBefore(listElement, purchaseHistory.firstChild);
 }

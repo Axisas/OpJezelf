@@ -15,6 +15,7 @@ body {
   font-family: sans-serif;
   text-align: center;
   overflow: hidden;
+  background-color: rgb(237, 237, 237);
 }
 
 .budget {
@@ -86,14 +87,14 @@ body {
 
 #toggler {
   position: fixed;
-  height: 20px;
+  height: 15px;
   bottom: 218px;
   left: 45%;
   right: 45%;
-  border: 3px solid black;
+  border: 1px solid black;
   border-bottom: 0;
   background-color: rgb(230, 230, 230);
-  font-size: 32px;
+  font-size: 24px;
   z-index: 1;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -120,6 +121,8 @@ body {
 #listelement {
   margin: 5px;
   padding: 20px;
+  padding-bottom: 25px;
   font-size: 18px;
-  border: 1px solid gray;
+  /* border-bottom: 2px solid lightgray; */
+  background-color: white;
 }
