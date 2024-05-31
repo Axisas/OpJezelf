@@ -8,11 +8,13 @@
   </head>
   <body>
     <!-- Button to change all of the values of income and charges -->
-    <button id="settingsbutton">⚙</button>
+    <button id="settingsbutton" onclick="togglePopUp()">⚙</button>
 
-    <div id="popupbg"></div>
+    <div id="popupbg" onclick="togglePopUp()"></div>
     <div id="settingspopup">
-      <button class="button" id="restart">Restart</button>
+      <button class="button" id="restart" onclick="restartApp(); togglePopUp()">
+        Restart
+      </button>
       <button class="button" id="changeValues">Verander Waardes</button>
     </div>
 
