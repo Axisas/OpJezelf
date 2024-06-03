@@ -61,7 +61,7 @@ toggler.addEventListener("pointerdown", function () {
 });
 
 groceries.addEventListener("pointerdown", function () {
-  setTimeout(changeMoneyValueOnce, 300, -45, "Groceries");
+  setTimeout(changeMoneyValueOnce, 300, -45, "Boodschappen");
   disableButtons();
 });
 
