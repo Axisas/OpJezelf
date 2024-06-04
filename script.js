@@ -4,6 +4,7 @@ let moneyValue;
 let moneyHasChanged = false;
 // i is used in the Interval as a counter
 let i = 0;
+let o = 0;
 let changeMoney;
 let startingMoney = 1100;
 let pastPurchases = ["1100 : Spaargeld"];
@@ -42,8 +43,24 @@ const chargesSources = [
   "Telefoon",
 ];
 
-// Adds eventlisteners to the buttons
+const actionsInMonth = [
+  "income",
+  "groceries",
+  "buy",
+  "event",
+  "groceries",
+  "buy",
+  "event",
+  "groceries",
+  "buy",
+  "event",
+  "groceries",
+  "buy",
+  "event",
+  "charges",
+];
 
+// Adds eventlisteners to the buttons
 toggler.addEventListener("pointerdown", function () {
   if (toggler.style.bottom == "0px") {
     toggler.style.bottom = "200px";
@@ -188,4 +205,35 @@ function updateHistory(lastPurchase, source) {
   }
   listElement.setAttribute("id", "listelement");
   purchaseHistory.insertBefore(listElement, purchaseHistory.firstChild);
+}
+
+function nextStep() {
+  console.log(actionsInMonth[o]);
+  if (actionsInMonth[o] == "income") {
+    i = 0;
+    changeMoney = setInterval(changeBalance, 1000, incomeValues, incomeSources);
+  }
+  if (actionsInMonth[o] == "buy") {
+    console.log("uhh");
+  }
+  if (actionsInMonth[o] == "groceries") {
+    setTimeout(changeMoneyValueOnce, 300, -45, "Boodschappen");
+  }
+  if (actionsInMonth[o] == "event") {
+    console.log("uhh");
+  }
+  if (actionsInMonth[o] == "charges") {
+    i = 0;
+    changeMoney = setInterval(
+      changeBalance,
+      1000,
+      chargesValues,
+      chargesSources
+    );
+  }
+  o++;
+  if (o > 13) {
+    o = 0;
+    console.log("next month");
+  }
 }
