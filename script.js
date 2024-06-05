@@ -12,15 +12,8 @@ let pastPurchases = ["1100 : Spaargeld"];
 let moneyText = document.getElementById("money");
 let moneyUpdateText = document.getElementById("moneychanged");
 
-let moneyInputField = document.getElementById("changemoney");
-let groceries = document.getElementById("groceries");
-let income = document.getElementById("income");
-let charges = document.getElementById("charges");
-let submit = document.getElementById("submit");
-
-let toggler = document.getElementById("toggler");
-
-// runs at the start as well to ensure everything is set up correctly
+let inputField = document.getElementById("inputfield");
+let submitInput = document.getElementById("submit");
 
 // EventListener for the restart button, enable if that button is enabled
 
@@ -60,45 +53,6 @@ const actionsInMonth = [
   "charges",
 ];
 
-// Adds eventlisteners to the buttons
-toggler.addEventListener("pointerdown", function () {
-  if (toggler.style.bottom == "0px") {
-    toggler.style.bottom = "200px";
-    for (const child of toggler.children) {
-      child.style.transform = "rotate(180deg)";
-    }
-    document.getElementById("inputwrapper").style.visibility = "visible";
-  } else {
-    toggler.style.bottom = "0px";
-    for (const child of toggler.children) {
-      child.style.transform = "rotate(0deg)";
-    }
-    document.getElementById("inputwrapper").style.visibility = "hidden";
-  }
-});
-
-groceries.addEventListener("pointerdown", function () {
-  setTimeout(changeMoneyValueOnce, 300, -45, "Boodschappen");
-  disableButtons();
-});
-
-income.addEventListener("pointerdown", function () {
-  i = 0;
-  changeMoney = setInterval(changeBalance, 1000, incomeValues, incomeSources);
-  disableButtons();
-});
-
-charges.addEventListener("pointerdown", function () {
-  i = 0;
-  changeMoney = setInterval(changeBalance, 1000, chargesValues, chargesSources);
-  disableButtons();
-});
-
-submit.addEventListener("pointerdown", function () {
-  setTimeout(changeMoneyValueOnce, 300, moneyInputField.value, "Other");
-  disableButtons();
-});
-
 function changeBalance(values, sources) {
   moneyHasChanged = true;
   if (values[i]) {
@@ -127,8 +81,8 @@ function changeBalance(values, sources) {
     i++;
   } else {
     checkBalance();
+    buttonEnable(this);
     clearInterval(changeMoney);
-    enableButtons();
   }
 }
 
@@ -152,8 +106,8 @@ function changeMoneyValueOnce(value, source) {
     moneyText.innerHTML = moneyValue;
 
     checkBalance();
-    enableButtons();
     clearInterval(changeMoney);
+    buttonEnable(this);
 
     moneyUpdateText.style.visibility = "hidden";
   }, 500);
@@ -163,22 +117,6 @@ function changeMoneyValueOnce(value, source) {
 }
 
 // NEED TO FIX BELOW: //
-
-function disableButtons() {
-  moneyInputField.style.pointerEvents = "none";
-  submit.style.pointerEvents = "none";
-  groceries.style.pointerEvents = "none";
-  income.style.pointerEvents = "none";
-  charges.style.pointerEvents = "none";
-}
-
-function enableButtons() {
-  moneyInputField.style.pointerEvents = "auto";
-  submit.style.pointerEvents = "auto";
-  groceries.style.pointerEvents = "auto";
-  income.style.pointerEvents = "auto";
-  charges.style.pointerEvents = "auto";
-}
 
 // checks whether the balance is negative or not
 function checkBalance() {
@@ -208,19 +146,30 @@ function updateHistory(lastPurchase, source) {
 }
 
 function nextStep() {
+  inputField.style.visibility = "hidden";
+  submitInput.style.visibility = "hidden";
   console.log(actionsInMonth[o]);
   if (actionsInMonth[o] == "income") {
     i = 0;
     changeMoney = setInterval(changeBalance, 1000, incomeValues, incomeSources);
   }
   if (actionsInMonth[o] == "buy") {
-    console.log("uhh");
+    buttonEnable();
+    setTimeout(function () {
+      inputField.style.visibility = "visible";
+      submitInput.style.visibility = "visible";
+    }, 200);
   }
   if (actionsInMonth[o] == "groceries") {
     setTimeout(changeMoneyValueOnce, 300, -45, "Boodschappen");
   }
   if (actionsInMonth[o] == "event") {
-    console.log("uhh");
+    buttonEnable();
+
+    setTimeout(function () {
+      inputField.style.visibility = "visible";
+      submitInput.style.visibility = "visible";
+    }, 200);
   }
   if (actionsInMonth[o] == "charges") {
     i = 0;
@@ -235,5 +184,27 @@ function nextStep() {
   if (o > 13) {
     o = 0;
     console.log("next month");
+  }
+}
+
+function buttonDisable() {
+  document.querySelector(`#inputfield`).style.pointerEvents = "none";
+  document.querySelector(`#submit`).style.pointerEvents = "none";
+  document.querySelector(`#nextstep`).style.pointerEvents = "none";
+}
+
+function buttonEnable() {
+  document.querySelector(`#inputfield`).style.pointerEvents = "auto";
+  document.querySelector(`#submit`).style.pointerEvents = "auto";
+  document.querySelector(`#nextstep`).style.pointerEvents = "auto";
+}
+
+function submitValue() {
+  let inputValue = document.querySelector(`#inputfield`).value;
+  if (actionsInMonth[o] == "buy") {
+    changeMoneyValueOnce(inputValue, "Aankopen");
+  }
+  if (actionsInMonth[o] == "event") {
+    changeMoneyValueOnce(inputValue, "Event");
   }
 }

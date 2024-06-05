@@ -35,34 +35,15 @@ body {
   color: black;
   margin-top: -10px;
   visibility: hidden;
-  /* width is a set value so it doesnt change the layout of everything */
   width: 25px;
 }
 
 /* Everything outside of the header below:  */
 
-#inputwrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  justify-content: center;
-  border-top: 2px solid black;
-  height: 200px;
-  background-color: white;
-  box-sizing: border-box;
-}
-
 .wrapper {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  justify-content: center;
-}
-.inputfield {
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 70% 30%;
   justify-content: center;
 }
 
@@ -86,27 +67,6 @@ body {
   background-color: rgb(192, 192, 192);
 }
 
-#toggler {
-  position: fixed;
-  height: 15px;
-  bottom: 200px;
-  left: 45%;
-  right: 45%;
-  border: 1px solid black;
-  border-bottom: 0;
-  background-color: rgb(230, 230, 230);
-  font-size: 24px;
-  z-index: 1;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-#toggler p {
-  transform: rotate(180deg);
-  /* ensures it it properly centered on rotation */
-  transform-origin: center 30%;
-}
-
 #history {
   display: block;
   box-sizing: border-box;
@@ -124,7 +84,6 @@ body {
   padding: 20px;
   padding-bottom: 25px;
   font-size: 18px;
-  /* border-bottom: 2px solid lightgray; */
   background-color: white;
 }
 
@@ -167,6 +126,35 @@ body {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  z-index: 5;
+  margin: 10px;
+}
+
+#inputfield {
+  position: absolute;
+  left: calc(50% - 100px);
+  top: 40%;
   background-color: white;
+  width: 200px;
+  height: 50px;
+}
+
+#submit {
+  position: absolute;
+  width: 120px;
+  height: 50px;
+  left: calc(50% - 60px);
+  top: calc(40% + 60px);
+}
+
+label {
+  position: absolute;
+  box-sizing: border-box;
+  width: 250px;
+  height: 200px;
+  left: calc(50% - 120px);
+  top: calc(40% - 60px);
+  background-color: white;
+  border-radius: 3px;
+  padding: 15px;
+  box-shadow: 4px 4px 8px lightgray;
 }
