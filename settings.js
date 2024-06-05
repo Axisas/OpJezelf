@@ -9,8 +9,9 @@ function startApp() {
 
   document.querySelector(`#inputfield`).value = 0;
 
-  // inputField.style.visibility = "hidden";
-  // submitInput.style.visibility = "hidden";
+  inputField.style.visibility = "hidden";
+  submitInput.style.visibility = "hidden";
+  inputFieldText.style.visibility = "hidden";
 }
 
 const startInput = document.getElementById("changeStartValue");

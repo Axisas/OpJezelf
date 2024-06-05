@@ -14,6 +14,7 @@ let moneyUpdateText = document.getElementById("moneychanged");
 
 let inputField = document.getElementById("inputfield");
 let submitInput = document.getElementById("submit");
+let inputFieldText = document.querySelector('label[for="inputfield"]');
 
 // EventListener for the restart button, enable if that button is enabled
 
@@ -148,6 +149,7 @@ function updateHistory(lastPurchase, source) {
 function nextStep() {
   inputField.style.visibility = "hidden";
   submitInput.style.visibility = "hidden";
+  inputFieldText.style.visibility = "hidden";
   console.log(actionsInMonth[o]);
   if (actionsInMonth[o] == "income") {
     i = 0;
@@ -158,6 +160,8 @@ function nextStep() {
     setTimeout(function () {
       inputField.style.visibility = "visible";
       submitInput.style.visibility = "visible";
+      inputFieldText.style.visibility = "visible";
+      inputFieldText.innerHTML = "Aankopen";
     }, 200);
   }
   if (actionsInMonth[o] == "groceries") {
@@ -169,6 +173,8 @@ function nextStep() {
     setTimeout(function () {
       inputField.style.visibility = "visible";
       submitInput.style.visibility = "visible";
+      inputFieldText.style.visibility = "visible";
+      inputFieldText.innerHTML = "Event";
     }, 200);
   }
   if (actionsInMonth[o] == "charges") {
@@ -200,11 +206,13 @@ function buttonEnable() {
 }
 
 function submitValue() {
-  let inputValue = document.querySelector(`#inputfield`).value;
   if (actionsInMonth[o] == "buy") {
-    changeMoneyValueOnce(inputValue, "Aankopen");
+    changeMoneyValueOnce(
+      document.querySelector(`#inputfield`).value,
+      "Aankopen"
+    );
   }
   if (actionsInMonth[o] == "event") {
-    changeMoneyValueOnce(inputValue, "Event");
+    changeMoneyValueOnce(document.querySelector(`#inputfield`).value, "Event");
   }
 }
