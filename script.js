@@ -4,7 +4,7 @@ let moneyValue;
 let moneyHasChanged = false;
 // i is used in the Interval as a counter
 let i = 0;
-let o = 0;
+let o = -1;
 let changeMoney;
 let startingMoney = 1100;
 let pastPurchases = ["1100 : Spaargeld"];
@@ -147,10 +147,11 @@ function updateHistory(lastPurchase, source) {
 }
 
 function nextStep() {
+  o++;
+
   inputField.style.visibility = "hidden";
   submitInput.style.visibility = "hidden";
   inputFieldText.style.visibility = "hidden";
-  console.log(actionsInMonth[o]);
   if (actionsInMonth[o] == "income") {
     i = 0;
     changeMoney = setInterval(changeBalance, 1000, incomeValues, incomeSources);
@@ -186,7 +187,6 @@ function nextStep() {
       chargesSources
     );
   }
-  o++;
   if (o > 13) {
     o = 0;
     console.log("next month");
