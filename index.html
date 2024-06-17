@@ -31,41 +31,28 @@
       <button class="button" onclick="changeSettings()">Submit</button>
     </div>
 
+    <!-- Budget -->
     <div class="budget">
       <h1>€</h1>
       <h1 id="money">0</h1>
       <h1>,-</h1>
-      <!-- Could make some code to allow decimals, is not necessary/relevant for now however -->
       <h1 id="moneychanged">0</h1>
     </div>
 
+    <!-- Purchase history -->
     <ol id="history">
       <li id="listelement" style="color: green">+1100 : Spaargeld</li>
     </ol>
 
-    <!-- Elements at bottom of screen, this is where the buttons and such are -->
-    <div id="toggler"><p id="togglertxt">^</p></div>
+    <label for="inputfield">Submit</label>
+    <input class="button" id="inputfield" type="number" step="5" value="-0" />
+    <button class="button" id="submit" type="number" onclick="submitValue();">
+      Submit
+    </button>
 
-    <div id="inputwrapper">
-      <button class="button" id="groceries">Boodschappen</button>
-
-      <div class="inputfield">
-        <input
-          class="button"
-          id="changemoney"
-          type="number"
-          step="5"
-          value="0"
-        />
-        <button class="button" id="submit">Submit</button>
-      </div>
-
-      <div class="wrapper">
-        <button class="button" id="income">Vaste Inkomsten</button>
-
-        <button class="button" id="charges">Vaste Lasten</button>
-      </div>
-    </div>
+    <button class="button" id="nextstep" onclick="buttonDisable(); nextStep();">
+      Volgende stap
+    </button>
 
     <script src="script.js"></script>
     <script src="settings.js"></script>

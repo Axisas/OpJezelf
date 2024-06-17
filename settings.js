@@ -4,9 +4,14 @@ const popupBG = document.getElementById("popupbg");
 function startApp() {
   moneyValue = startingMoney;
   moneyText.innerHTML = moneyValue;
-  moneyInputField.value = 0;
   checkBalance();
   clearInterval(changeMoney);
+
+  document.querySelector(`#inputfield`).value = 0;
+
+  inputField.style.visibility = "hidden";
+  submitInput.style.visibility = "hidden";
+  inputFieldText.style.visibility = "hidden";
 }
 
 const startInput = document.getElementById("changeStartValue");
