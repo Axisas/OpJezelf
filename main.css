@@ -79,6 +79,7 @@ body {
   height: 80vh;
   -webkit-overflow-scrolling: touch;
 }
+
 #listelement {
   margin: 5px;
   padding: 20px;
@@ -105,9 +106,10 @@ body {
   box-sizing: border-box;
   width: 90vw;
   height: 50vh;
+  min-height: 400px;
   margin: 5%;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   z-index: 3;
   display: none;
 }
@@ -157,4 +159,14 @@ label {
   border-radius: 3px;
   padding: 15px;
   box-shadow: 4px 4px 8px lightgray;
+}
+
+.settingsexplanation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  color: gray;
+  font-size: 12px;
+  text-align: left;
 }
