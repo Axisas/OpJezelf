@@ -149,6 +149,11 @@ function updateHistory(lastPurchase, source) {
 function nextStep() {
   o++;
 
+  // disable the inputs
+  document.querySelector(`#inputfield`).style.pointerEvents = "none";
+  document.querySelector(`#submit`).style.pointerEvents = "none";
+  document.querySelector(`#nextstep`).style.pointerEvents = "none";
+
   inputField.style.visibility = "hidden";
   submitInput.style.visibility = "hidden";
   inputFieldText.style.visibility = "hidden";
@@ -189,14 +194,7 @@ function nextStep() {
   }
   if (o > 13) {
     o = 0;
-    console.log("next month");
   }
-}
-
-function buttonDisable() {
-  document.querySelector(`#inputfield`).style.pointerEvents = "none";
-  document.querySelector(`#submit`).style.pointerEvents = "none";
-  document.querySelector(`#nextstep`).style.pointerEvents = "none";
 }
 
 function buttonEnable() {

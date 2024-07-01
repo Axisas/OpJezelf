@@ -14,6 +14,8 @@ function startApp() {
   inputFieldText.style.visibility = "hidden";
 }
 
+document.addEventListener("DOMContentLoaded", startApp);
+
 const startInput = document.getElementById("changeStartValue");
 const incomeInput = document.getElementById("changeIncome");
 incomeInput.value = incomeValues[0];
@@ -29,7 +31,6 @@ for (let i = 1; i < incomeValues.length; i++) {
 for (let i = 1; i < chargesValues.length; i++) {
   chargesInput.value += ", " + chargesValues[i];
 }
-document.addEventListener("DOMContentLoaded", startApp);
 
 function changeSettings() {
   if (!moneyHasChanged) {
@@ -51,9 +52,6 @@ function changeSettings() {
   for (let i = 0; i < tempChargesArray.length; i++) {
     chargesValues.push(tempChargesArray[i] * 1);
   }
-
-  console.log(incomeValues);
-  console.log(chargesValues);
 }
 
 function togglePopUp() {
