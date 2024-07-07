@@ -17,18 +17,32 @@
       </button>
 
       <div id="changevalues">
-        <input
-          class="button"
-          id="changeStartValue"
-          type="number"
-          step="5"
-          value="0"
-        />
-        <input class="button" id="changeIncome" step="5" value="0" />
-        <input class="button" id="changeCharges" step="5" value="0" />
+        <div>
+          <p>Starting Money:</p>
+          <input
+            class="button"
+            id="changeStartValue"
+            type="number"
+            step="5"
+            value="0"
+          />
+        </div>
+        <div>
+          <p>Income Money:</p>
+          <input class="button" id="changeIncome" step="5" value="0" />
+        </div>
+        <div>
+          <p>Charges Money:</p>
+          <input class="button" id="changeCharges" step="5" value="0" />
+        </div>
       </div>
 
       <button class="button" onclick="changeSettings()">Submit</button>
+
+      <p class="settingsexplanation">
+        To change the values of the app, change the values above. Regarding the
+        fields with multiple values, keep the structure of: number, number, etc.
+      </p>
     </div>
 
     <!-- Budget -->
