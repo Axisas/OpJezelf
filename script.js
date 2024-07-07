@@ -8,6 +8,7 @@ let o = -1;
 let changeMoney;
 let startingMoney = 1100;
 let pastPurchases = ["1100 : Spaargeld"];
+let groceriesCost = -45;
 
 let moneyText = document.getElementById("money");
 let moneyUpdateText = document.getElementById("moneychanged");
@@ -171,7 +172,7 @@ function nextStep() {
     }, 200);
   }
   if (actionsInMonth[o] == "groceries") {
-    setTimeout(changeMoneyValueOnce, 300, -45, "Boodschappen");
+    setTimeout(changeMoneyValueOnce, 300, groceriesCost, "Boodschappen");
   }
   if (actionsInMonth[o] == "event") {
     buttonEnable();
